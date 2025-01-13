@@ -8,7 +8,10 @@ DOMAIN,m3u.nikanba.live
 #量子
 DOMAIN,cj.lziapi.com
 DOMAIN,img.lzzyimg.com
-DOMAIN-KEYWORD,v.cdnlz
+DOMAIN,v.cdnlz3.com
+DOMAIN-KEYWORD,cdnlz
+DOMAIN-KEYWORD,lziapi
+DOMAIN-KEYWORD,cdnlz3
 #黑木耳主页
 DOMAIN-SUFFIX,heimuer.tv
 DOMAIN-SUFFIX,heimuer.xyz
