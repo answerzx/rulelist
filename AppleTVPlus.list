@@ -9,3 +9,4 @@ DOMAIN,tv.applemusic.com
 DOMAIN,uts-api.itunes.apple.com
 USER-AGENT,AppleTV*
 USER-AGENT,com.apple.tv*
+PROCESS-NAME,TV
