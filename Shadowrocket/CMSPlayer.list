@@ -1,6 +1,4 @@
 # CMSPlayer
-#DOMAIN,gateway.icloud.com
-#DOMAIN,metrics.icloud.com
 # 低端影视
 DOMAIN-SUFFIX,ddys.pro
 # 华为吧
