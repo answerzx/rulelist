@@ -12,6 +12,14 @@ DOMAIN-KEYWORD,baidu
 # IP段匹配
 IP-CIDR,219.146.1.66/32,no-resolve
 
+#量子
+DOMAIN,cj.lziapi.com
+DOMAIN,img.lzzyimg.com
+DOMAIN,v.cdnlz3.com
+DOMAIN-KEYWORD,cdnlz
+DOMAIN-KEYWORD,lziapi
+DOMAIN-KEYWORD,cdnlz3
+
 # 国内DNS
 DOMAIN-SUFFIX,dns.alidns.com
 DOMAIN-SUFFIX,doh.pub
