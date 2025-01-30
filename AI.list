@@ -3,8 +3,10 @@
 DOMAIN-KEYWORD,openai
 DOMAIN-KEYWORD,anthropic
 DOMAIN-KEYWORD,Claude
+# hoyoberse
 DOMAIN-KEYWORD,hoyoverse
 DOMAIN-KEYWORD,zenlesszonezero
+DOMAIN-KEYWORD,xboxab.com
 # 域名后缀匹配
 DOMAIN-SUFFIX,perplexity.ai
 DOMAIN-SUFFIX,chatgpt.com
