@@ -2,7 +2,7 @@
 # 机场订阅
 proxy-providers:
   AiFun:
-    url: "https://sbgfw.trafficmanager.net/api/v1/client/subscribe?token=6abd210a582b60a2888347e1d2befbea"
+    url: "https://wcnmgfw.trafficmanager.net/api/v1/client/subscribe?token=6abd210a582b60a2888347e1d2befbea"
     type: http
     interval: 86400
     health-check:
