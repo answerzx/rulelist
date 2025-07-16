@@ -144,6 +144,7 @@ proxy-groups:
 rules:
   - DOMAIN-SUFFIX,qichiyu.com,🚀 默认代理
   - DOMAIN-SUFFIX,apple.com,直连 
+  - DOMAIN-SUFFIX,icloud.com,直连 
   - RULE-SET,private_domain,直连 
   - RULE-SET,miyaDirect,直连
   - RULE-SET,bilibili_domain,直连
