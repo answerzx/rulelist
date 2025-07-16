@@ -6,11 +6,6 @@ DOMAIN-SUFFIX,time.windows.com
 DOMAIN-SUFFIX,lanzov.com
 DOMAIN-SUFFIX,hao123.com
 
-# hoyoberse
-DOMAIN-KEYWORD,hoyoverse
-DOMAIN-KEYWORD,zenlesszonezero
-DOMAIN-KEYWORD,xboxab.com
-IP-CIDR,8.221.148.4,no-resolve
 
 # 域名关键字匹配
 DOMAIN-KEYWORD,baidu
