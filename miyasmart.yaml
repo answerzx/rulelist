@@ -115,6 +115,7 @@ proxy-groups:
   - {name: 📹 YouTube, <<: *pr}
   - {name: 📹 CMSPlayer, <<: *pr}
   - {name: 🍀 Google, <<: *pr}
+  - {name: 🎵 Hoyoverse, <<: *pr}
   - {name: 🤖 ChatGPT, <<: *pr}
   - {name: 👨🏿‍💻 GitHub, <<: *pr}
   - {name: 🐬 OneDrive, <<: *pr}
@@ -144,6 +145,7 @@ rules:
   - DOMAIN-SUFFIX,qichiyu.com,🚀 默认代理
   - RULE-SET,private_domain,直连 
   - RULE-SET,miyaDirect,直连
+  - RULE-SET,bilibili_domain,直连
   - RULE-SET,apple_domain,🍎 Apple
   - RULE-SET,proxylite,🚀 默认代理
   - RULE-SET,miyaProxy,🚀 默认代理
@@ -152,6 +154,7 @@ rules:
   - RULE-SET,cmsplayer,📹 CMSPlayer
   - RULE-SET,youtube_domain,📹 YouTube
   - RULE-SET,google_domain,🍀 Google
+  - RULE-SET,hoyoverse_domain,🎵 Hoyoverse
   - RULE-SET,onedrive_domain,🐬 OneDrive
   - RULE-SET,microsoft_domain,🪟 Microsoft
   - RULE-SET,tiktok_domain,🎵 TikTok
@@ -181,6 +184,8 @@ rule-providers:
   cmsplayer: { <<: *class, url: "https://raw.githubusercontent.com/answerzx/rulelist/refs/heads/main/Shadowrocket/CMSPlayer.list"}
   ai: {  <<: *domain, url: "https://github.com/MetaCubeX/meta-rules-dat/raw/refs/heads/meta/geo/geosite/category-ai-!cn.mrs" } 
   youtube_domain: { <<: *domain, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/youtube.mrs"}
+  bilibili_domain: { <<: *domain, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/bilibili.mrs"}
+  hoyoverse_domain: { <<: *domain, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/hoyoverse.mrs"}
   google_domain: { <<: *domain, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/google.mrs"}
   github_domain: { <<: *domain, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/github.mrs"}
   telegram_domain: { <<: *domain, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/telegram.mrs"}
