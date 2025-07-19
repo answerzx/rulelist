@@ -1,8 +1,8 @@
 # 注意规则在满足自己需求情况下，尽量做到精简，不要过度复杂，以免影响性能。
 # 机场订阅
 proxy-providers:
-  AiFun:
-    url: "https://wcnmgfw.trafficmanager.net/api/v1/client/subscribe?token=6abd210a582b60a2888347e1d2befbea"
+  BEUP:
+    url: "https://s.stga.cn/api/v1/client/subscribe?token=a09af957f44c1ab2e10a8af9e37fa278"
     type: http
     interval: 86400
     health-check:
