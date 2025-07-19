@@ -11,15 +11,6 @@ proxy-providers:
       interval: 300
     proxy: 直连
 
-  OuO:
-    url: "https://oss6.cauenvao.click/api/v1/client/subscribe?token=e5ceee37fe197c6eff5de277405a3d3d"
-    type: http
-    interval: 86400
-    health-check:
-      enable: true
-      url: https://www.gstatic.com/generate_204
-      interval: 300
-    proxy: 直连
 
 
     #override:
@@ -149,6 +140,7 @@ rules:
   - RULE-SET,miyaDirect,直连
   - RULE-SET,bilibili_domain,直连
   - RULE-SET,apple_domain,🍎 Apple
+  - RULE-SET,applecn_domain,🍎 Apple
   - RULE-SET,proxylite,🚀 默认代理
   - RULE-SET,miyaProxy,🚀 默认代理
   - RULE-SET,ai,🤖 ChatGPT
@@ -196,7 +188,7 @@ rule-providers:
   onedrive_domain: { <<: *domain, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/onedrive.mrs"}
   microsoft_domain: { <<: *domain, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/microsoft.mrs"}
   apple_domain: { <<: *domain, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/apple.mrs"}
-  apple_domain: { <<: *domain, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/apple-cn.mrs"}
+  applecn_domain: { <<: *domain, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/apple-cn.mrs"}
   speedtest_domain: { <<: *domain, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/ookla-speedtest.mrs"}
   tiktok_domain: { <<: *domain, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/tiktok.mrs"}
   gfw_domain: { <<: *domain, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/gfw.mrs"}
