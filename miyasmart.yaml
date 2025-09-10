@@ -1,8 +1,8 @@
 # 注意规则在满足自己需求情况下，尽量做到精简，不要过度复杂，以免影响性能。
 # 机场订阅
 proxy-providers:
-  BEUP:
-    url: "https://s.stga.cn/api/v1/client/subscribe?token=a09af957f44c1ab2e10a8af9e37fa278"
+  huacloud:
+    url: "https://api-huacloud.net/sub?target=clash&insert=true&emoji=true&udp=true&clash.doh=true&new_name=true&filename=Flower_SS.yaml&url=https%3A%2F%2Fapi.xmancdn.net%2Fosubscribe.php%3Fsid%3D206058%26token%3DPk2NFaNSDf3n%26sip002%3D1"
     type: http
     interval: 86400
     health-check:
@@ -104,18 +104,14 @@ pr: &pr {type: select, proxies: [🚀 默认代理, ♻️ 香港智能, ♻️ 
 proxy-groups:
   - {name: 🚀 默认代理, type: select, proxies: [♻️ 香港智能, ♻️ 日本智能, ♻️ 美国智能, 🔯 香港故转, 🔯 日本故转, ♻️ 自动选择, 🇭🇰 香港节点, 🇯🇵 日本节点, 🇺🇲 美国节点, 🌐 全部节点, 直连]}
   - {name: 📹 YouTube, <<: *pr}
-  - {name: 📹 CMSPlayer, <<: *pr}
   - {name: 🍀 Google, <<: *pr}
-  - {name: 🎵 Hoyoverse, <<: *pr}
   - {name: 🤖 ChatGPT, <<: *pr}
   - {name: 👨🏿‍💻 GitHub, <<: *pr}
   - {name: 🐬 OneDrive, <<: *pr}
   - {name: 🪟 Microsoft, <<: *pr}
-  - {name: 🎵 TikTok, <<: *pr}
+  - {name: 🎵 IMDB, <<: *pr}
   - {name: 📲 Telegram, <<: *pr}
   - {name: 🎥 NETFLIX, <<: *pr}
-  - {name: ✈️ Speedtest, <<: *pr}
-  - {name: 💶 PayPal, <<: *pr}
   - {name: 🍎 Apple, type: select, proxies: [直连, 🚀 默认代理]}
   - {name: 🎯 直连, type: select, proxies: [直连, 🚀 默认代理]}
   - {name: 🐟 漏网之鱼, <<: *pr}
@@ -143,19 +139,16 @@ rules:
   - RULE-SET,applecn_domain,🍎 Apple
   - RULE-SET,proxylite,🚀 默认代理
   - RULE-SET,miyaProxy,🚀 默认代理
+  - RULE-SET,imdb_domain,🎵 IMDB
+  - RULE-SET,tmdb_domain,🎵 IMDB
   - RULE-SET,ai,🤖 ChatGPT
   - RULE-SET,github_domain,👨🏿‍💻 GitHub
-  - RULE-SET,cmsplayer,📹 CMSPlayer
   - RULE-SET,youtube_domain,📹 YouTube
   - RULE-SET,google_domain,🍀 Google
-  - RULE-SET,hoyoverse_domain,🎵 Hoyoverse
   - RULE-SET,onedrive_domain,🐬 OneDrive
   - RULE-SET,microsoft_domain,🪟 Microsoft
-  - RULE-SET,tiktok_domain,🎵 TikTok
-  - RULE-SET,speedtest_domain,✈️ Speedtest
   - RULE-SET,telegram_domain,📲 Telegram
   - RULE-SET,netflix_domain,🎥 NETFLIX
-  - RULE-SET,paypal_domain,💶 PayPal
   - RULE-SET,gfw_domain,🚀 默认代理
   - RULE-SET,geolocation-!cn,🚀 默认代理
   - RULE-SET,cn_domain,🎯 直连
@@ -175,22 +168,19 @@ rule-providers:
   proxylite: { <<: *class, url: "https://raw.githubusercontent.com/qichiyuhub/rule/refs/heads/main/proxy.list"}
   miyaProxy: { <<: *class, url: "https://raw.githubusercontent.com/answerzx/rulelist/refs/heads/main/ProxyLite.list"}
   miyaDirect: { <<: *class, url: "https://raw.githubusercontent.com/answerzx/rulelist/refs/heads/main/MyDirect.list"}
-  cmsplayer: { <<: *class, url: "https://raw.githubusercontent.com/answerzx/rulelist/refs/heads/main/Shadowrocket/CMSPlayer.list"}
   ai: {  <<: *domain, url: "https://github.com/MetaCubeX/meta-rules-dat/raw/refs/heads/meta/geo/geosite/category-ai-!cn.mrs" } 
   youtube_domain: { <<: *domain, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/youtube.mrs"}
   bilibili_domain: { <<: *domain, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/bilibili.mrs"}
-  hoyoverse_domain: { <<: *domain, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/hoyoverse.mrs"}
   google_domain: { <<: *domain, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/google.mrs"}
   github_domain: { <<: *domain, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/github.mrs"}
   telegram_domain: { <<: *domain, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/telegram.mrs"}
   netflix_domain: { <<: *domain, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/netflix.mrs"}
-  paypal_domain: { <<: *domain, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/paypal.mrs"}
   onedrive_domain: { <<: *domain, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/onedrive.mrs"}
   microsoft_domain: { <<: *domain, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/microsoft.mrs"}
   apple_domain: { <<: *domain, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/apple.mrs"}
   applecn_domain: { <<: *domain, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/apple-cn.mrs"}
-  speedtest_domain: { <<: *domain, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/ookla-speedtest.mrs"}
-  tiktok_domain: { <<: *domain, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/tiktok.mrs"}
+  imdb_domain: { <<: *domain, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/imdb.mrs"}
+  tmdb_domain: { <<: *domain, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/tmdb.mrs"}
   gfw_domain: { <<: *domain, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/gfw.mrs"}
   geolocation-!cn: { <<: *domain, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/geolocation-!cn.mrs"}
   cn_domain: { <<: *domain, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/cn.mrs"}
@@ -199,3 +189,5 @@ rule-providers:
   google_ip: { <<: *ip, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geoip/google.mrs"}
   telegram_ip: { <<: *ip, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geoip/telegram.mrs"}
   netflix_ip: { <<: *ip, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geoip/netflix.mrs"}
+authentication:
+- Clash:W5ENRVxa
