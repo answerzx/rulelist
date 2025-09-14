@@ -1,8 +1,17 @@
 # 注意规则在满足自己需求情况下，尽量做到精简，不要过度复杂，以免影响性能。
 # 机场订阅
 proxy-providers:
-  huacloud:
-    url: "https://api-huacloud.net/sub?target=clash&insert=true&emoji=true&udp=true&clash.doh=true&new_name=true&filename=Flower_SS.yaml&url=https%3A%2F%2Fapi.xmancdn.net%2Fosubscribe.php%3Fsid%3D206058%26token%3DPk2NFaNSDf3n%26sip002%3D1"
+  linkcube:
+    url: "https://api-linkcube.com/subscribe/qnzrj-xbfl5nsn"
+    type: http
+    interval: 86400
+    health-check:
+      enable: true
+      url: https://www.gstatic.com/generate_204
+      interval: 300
+    proxy: 直连
+  liangxin:
+    url: "https://liangxin.xyz/api/v1/liangxin?OwO=c6d1e431c81f548243806b0d9300a1a0"
     type: http
     interval: 86400
     health-check:
