@@ -3,8 +3,8 @@
 # 跑裸核用户请自行去掉下方控制面板模块的注释。
 # 机场订阅
 proxy-providers:
-  shouhou:
-    url: "https://sub1.sntp.dev/baseStr?token=f7dbe65bc9bb9b1b39bcefb8b633c18a&timestamp=141637"
+  anserzxzuhe:
+    url: "http://192.168.31.2:3001/CKg2abstVnOeRpm1aB4G/download/collection/%E7%BB%84%E5%90%88%E8%AE%A2%E9%98%85?target=ClashMeta"
     type: http
     interval: 86400
     health-check:
@@ -12,16 +12,6 @@ proxy-providers:
       url: https://www.gstatic.com/generate_204
       interval: 300
     proxy: 直连
-  liangxin:
-    url: "https://liangxin.xyz/api/v1/liangxin?OwO=c6d1e431c81f548243806b0d9300a1a0"
-    type: http
-    interval: 86400
-    health-check:
-      enable: true
-      url: https://www.gstatic.com/generate_204
-      interval: 300
-    proxy: 直连
-
 
 proxies:
   - {name: 直连, type: direct}
@@ -55,8 +45,8 @@ secret: ""
 #external-ui: "/etc/openclash/run"
 #external-ui-name: zashboard
 #external-ui-url: "https://ghfast.top/github.com/Zephyruso/zashboard/archive/refs/heads/gh-pages.zip"
-authentication:
-  - Clash:W5ENRVxa
+#eauthentication:
+  #e- Clash:W5ENRVxa
 
 # 嗅探
 sniffer:
@@ -109,9 +99,9 @@ dns:
  
 # 出站策略 smart参数 （ uselightgbm: false, collectdata: false, strategy: sticky-sessions,policy-priority: "Premium:0.9;SG:1.3" ）
 # 没有再使用锚点，是考虑很多新手修改难度，这样新手修改某个分组更容易些。
-pr: &pr {type: select, proxies: [🚀 默认代理, ♻️ 香港智能, ♻️ 日本智能, ♻️ 美国智能, 🔯 香港便宜故转, 🔯 日本便宜故转, 🔯 狮城便宜故转, 🔯 美国便宜故转, 🇭🇰 香港节点, 🇯🇵 日本节点, 🇺🇲 美国节点, 🕊️ 良心故专, 直连]}
+pr: &pr {type: select, proxies: [🚀 默认代理, ♻️ 香港智能, ♻️ 日本智能, ♻️ 美国智能, 🔯 香港便宜故转, 🔯 日本便宜故转, 🔯 狮城便宜故转, 🔯 美国便宜故转, ♻️ 自动选择,🕵️ 手动选择, 🔑 自建节点, 直连]}
 proxy-groups:
-  - {name: 🚀 默认代理, type: select, proxies: [🔯 香港便宜故转, 🔯 日本便宜故转, 🔯 狮城便宜故转, 🔯 美国便宜故转, ♻️ 香港智能, ♻️ 日本智能, ♻️ 狮城智能, ♻️ 美国智能, ♻️ 自动选择, 🇭🇰 香港节点, 🇯🇵 日本节点, 🇸🇬 狮城节点, 🇺🇲 美国节点, 🕊️ 良心故专, 直连]} 
+  - {name: 🚀 默认代理, type: select, proxies: [🔯 香港便宜故转, 🔯 日本便宜故转, 🔯 狮城便宜故转, 🔯 美国便宜故转, ♻️ 香港智能, ♻️ 日本智能, ♻️ 狮城智能, ♻️ 美国智能, ♻️ 自动选择,🕵️ 手动选择, 🔑 自建节点, 直连]} 
   - {name: 📹 YouTube, <<: *pr}
   - {name: 🍀 Google, <<: *pr}
   - {name: 🤖 ChatGPT, <<: *pr}
@@ -128,17 +118,18 @@ proxy-groups:
   - {name: 🇯🇵 日本节点, type: select, include-all: true, filter: "(?i)日|jp|japan"}
   - {name: 🇸🇬 狮城节点, type: select, include-all: true, filter: "(?i)新加坡|坡|狮城|SG|Singapore"}
   - {name: 🇺🇲 美国节点, type: select, include-all: true, filter: "(?i)美|us|unitedstates|united states"}
+  - {name: 🔑 自建节点, type: select, include-all: true, filter: "(?=.*自建).*$"}
   - {name: 🔯 香港便宜故转, type: fallback, include-all: true, tolerance: 20, interval: 300, filter: "(?=.*(港|HK|(?i)Hong))(?=.*0.2)^((?!(台|日|韩|新|深|2.00x|美)).)*$"}
   - {name: 🔯 日本便宜故转, type: fallback, include-all: true, tolerance: 20, interval: 300, filter: "(?=.*(日|JP|(?i)Japan))(?=.*0.2)^((?!(港|台|韩|新|2.00x|美)).)*$" }
   - {name: 🔯 狮城便宜故转, type: fallback, include-all: true, tolerance: 20, interval: 300, filter: "(?=.*(新加坡|坡|狮城|SG|Singapore))(?=.*0.2)^((?!(台|日|韩|深|2.00x|美)).)*$"}
   - {name: 🔯 美国便宜故转, type: fallback, include-all: true, tolerance: 20, interval: 300, filter: "(?=.*(美|US|(?i)States|America))(?=.*0.2)^((?!(港|台|韩|新|2.00x|日)).)*$" }
-  - {name: ♻️ 香港智能, type: smart, uselightgbm: false, collectdata: false, include-all: true, interval: 300, filter: "(?=.*(港|HK|(?i)Hong))^((?!(台|日|韩|新|深|美|BGP|2.00x|0.20x|流媒体)).)*$"}
-  - {name: ♻️ 日本智能, type: smart, uselightgbm: false, collectdata: false, include-all: true, interval: 300, filter: "(?=.*(日|JP|(?i)Japan))^((?!(港|台|韩|新|美|BGP|2.00x|0.20x|流媒体)).)*$" }
-  - {name: ♻️ 狮城智能, type: smart, uselightgbm: false, collectdata: false, include-all: true, interval: 300, filter: "(?=.*(新加坡|坡|狮城|SG|Singapore))^((?!(港|台|韩|日|美|BGP|2.00x|0.20x|流媒体)).)*$" }
-  - {name: ♻️ 美国智能, type: smart, uselightgbm: false, collectdata: false, include-all: true, interval: 300, filter: "(?=.*(美|US|(?i)States|America))^((?!(港|台|日|韩|新|BGP|2.00x|0.20x|流媒体)).)*$"}
+  - {name: ♻️ 香港智能, type: smart, uselightgbm: false, collectdata: false, include-all: true, interval: 300, filter: "(?=.*(港|HK|(?i)Hong))^((?!(台|日|韩|新|深|美|2.00x|0.20x)).)*$"}
+  - {name: ♻️ 日本智能, type: smart, uselightgbm: false, collectdata: false, include-all: true, interval: 300, filter: "(?=.*(日|JP|(?i)Japan))^((?!(港|台|韩|新|美|2.00x|0.20x)).)*$" }
+  - {name: ♻️ 狮城智能, type: smart, uselightgbm: false, collectdata: false, include-all: true, interval: 300, filter: "(?=.*(新加坡|坡|狮城|SG|Singapore))^((?!(港|台|韩|日|美|2.00x|0.20x)).)*$" }
+  - {name: ♻️ 美国智能, type: smart, uselightgbm: false, collectdata: false, include-all: true, interval: 300, filter: "(?=.*(美|US|(?i)States|America))^((?!(港|台|日|韩|新|2.00x|0.20x)).)*$"}
   - {name: ♻️ 自动选择, type: url-test, include-all: true, tolerance: 20, interval: 300, filter: "^((?!(直连)).)*$"}
-  - {name: 🌐 全部节点, type: select, include-all: true}
-  - {name: 🕊️ 良心故专, type: fallback, include-all: true, tolerance: 20, interval: 300, filter: "(?=.*BGP).*$"}
+  - {name: 🕵️ 手动选择, type: select, include-all: true}
+  #- {name: 🕊️ 良心故专, type: fallback, include-all: true, tolerance: 20, interval: 300, filter: "(?=.*BGP).*$"}
 
 # 规则匹配
 # 此规则部分没有做防泄露处理，因为弊严重大于利！
@@ -147,6 +138,8 @@ rules:
   - DOMAIN-SUFFIX,icloud.com,🍎 Apple
   - DOMAIN-KEYWORD,fulibl,🚀 默认代理
   - DOMAIN-kEYWORD,missav,🚀 默认代理
+  - DOMAIN-kEYWORD,cn2gias, 🎥 NETFLIX
+  - DOMAIN-kEYWORD,ncdn,🚀 默认代理
   - DOMAIN-KEYWORD,ntfy,直连
   - RULE-SET,apple_domain,🍎 Apple
   - RULE-SET,applecn_domain,🍎 Apple
