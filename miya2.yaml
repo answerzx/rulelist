@@ -6,7 +6,7 @@ proxy-providers:
   answerzxzuhe:
     url: "http://192.168.31.2:3001/CKg2abstVnOeRpm1aB4G/download/collection/%E7%BB%84%E5%90%88%E8%AE%A2%E9%98%85?target=ClashMeta"
     type: http
-    interval: 86400
+ #   interval: 86400
     health-check:
       enable: true
       url: https://www.gstatic.com/generate_204
@@ -16,13 +16,12 @@ proxy-providers:
   CF:
     url: "https://s.jhb.edu.kg/sub?target=clash&url=https%3A%2F%2Fworks.answerzx.top%2Fec559efb-0f4d-4c18-a3c1-8825f6d58a65%2Fsub&insert=false"
     type: http
-    interval: 86400
+ #   interval: 86400
     health-check:
       enable: true
       url: https://www.gstatic.com/generate_204
       interval: 300
-    proxy: 🚀 默认代理
-
+    proxy: 直连
 proxies:
   - {name: 直连, type: direct}
 
@@ -52,9 +51,8 @@ profile:
 # 因容易造成新手面板启动问题，我注释掉了，需要的自行开启
 external-controller: 0.0.0.0:9090
 secret: "a7788414"
-#external-ui: "/etc/openclash/run"
-#external-ui-name: zashboard
-#external-ui-url: "https://ghfast.top/github.com/Zephyruso/zashboard/archive/refs/heads/gh-pages.zip"
+external-ui: "/etc/openclash/run"
+external-ui-url: "https://ghfast.top/github.com/Zephyruso/zashboard/archive/refs/heads/gh-pages.zip"
 #eauthentication:
   #- Clash:W5ENRVxa
 
@@ -113,7 +111,7 @@ dns:
 pr: &pr {type: select, proxies: [🚀 默认代理, 🔯 香港故转, 🔯 日本故转, 🔯 狮城故转, 🔯 美国故转, 🔑 自建节点, 🧩 CFWorks,💸 便宜节点,直连]}
 dr: &dr {type: select, proxies: [直连,🚀 默认代理, 🔯 香港故转, 🔯 日本故转, 🔯 狮城故转, 🔯 美国故转, 🔑 自建节点, 🧩 CFWorks,💸 便宜节点]}
 proxy-groups:
-  - {name: 🚀 默认代理, type: select, proxies: [♻️ 香港智能, ♻️ 日本智能, ♻️ 狮城智能, ♻️ 美国智能, 🔯 香港故转, 🔯 日本故转, 🔯 狮城故转, 🔯 美国故转, 🧩 CFWorks, 🔑 自建节点, 💸 便宜节点,直连]} 
+  - {name: 🚀 默认代理, type: select, proxies: [♻️ 香港智能, ♻️ 日本智能, ♻️ 狮城智能, ♻️ 美国智能, 🔯 香港故转, 🔯 日本故转, 🔯 狮城故转, 🔯 美国故转, 🧩 CFWorks, 🔑 自建节点, 💸 便宜节点,🌐 手动选择,直连]} 
   - {name: 📹 YouTube, <<: *pr}
   - {name: 🍀 Google, <<: *pr}
   - {name: 🤖 ChatGPT, <<: *pr}
@@ -122,9 +120,9 @@ proxy-groups:
   - {name: 🪟 Microsoft, <<: *dr}
   - {name: 📲 Telegram, <<: *pr}
   - {name: 🎥 NETFLIX, <<: *pr}
-  - {name: ✈️ Speedtest, <<: *dr}
+  - {name: ✈️ Speedtest, <<: *pr}
   - {name: 🍎 Apple, <<: *dr}
-  - {name: 🐟 漏网之鱼, <<: *dr}
+  - {name: 🐟 漏网之鱼, <<: *pr}
   - {name: 🔑 自建节点, type: select, include-all: true, filter: "(?=.*自建).*$"}
   - {name: 💸 便宜节点, type: select, include-all: true, filter: "(?=.*0.20x).*$"}
   - {name: 🧩 CFWorks, type: url-test, include-all: true, tolerance: 20, interval: 300, filter: "(?i)(?=.*WS).*$"}
@@ -136,14 +134,16 @@ proxy-groups:
   - {name: ♻️ 日本智能, type: smart, uselightgbm: false, collectdata: false, include-all: true, interval: 300, filter: "(?=.*(日|JP|(?i)Japan))^((?!(港|台|韩|新|美|x|自建)).)*$" }
   - {name: ♻️ 狮城智能, type: smart, uselightgbm: false, collectdata: false, include-all: true, interval: 300, filter: "(?=.*(新加坡|坡|狮城|SG|Singapore))^((?!(港|台|韩|日|美|x|自建)).)*$" }
   - {name: ♻️ 美国智能, type: smart, uselightgbm: false, collectdata: false, include-all: true, interval: 300, filter: "(?=.*(美|US|(?i)States|America))^((?!(港|台|日|韩|新|x|自建)).)*$"}
+  - {name: ♻️ 自动选择, type: url-test, include-all: true, tolerance: 20, interval: 300, filter: "^((?!(直连)).)*$"}
+  - {name: 🌐 手动选择, type: select, include-all: true}
 # 规则匹配
 # 此规则部分没有做防泄露处理，因为弊严重大于利！
 rules:
   - DOMAIN-SUFFIX,qichiyu.com,🚀 默认代理
   - DOMAIN-SUFFIX,icloud.com,🍎 Apple
   - DOMAIN-KEYWORD,fulibl,🚀 默认代理
-  - DOMAIN-kEYWORD,missav,🎥 NETFLIX
-  - DOMAIN-kEYWORD,cn2gias, 🎥 NETFLIX
+  - DOMAIN-KEYWORD,missav,🎥 NETFLIX
+  - DOMAIN-KEYWORD,cn2gias,🎥 NETFLIX
   - DOMAIN-KEYWORD,ntfy,直连
   - RULE-SET,apple_domain,🍎 Apple
   - RULE-SET,applecn_domain,🍎 Apple
