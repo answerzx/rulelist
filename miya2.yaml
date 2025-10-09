@@ -6,7 +6,7 @@ proxy-providers:
   answerzxzuhe:
     url: "http://192.168.31.2:3001/CKg2abstVnOeRpm1aB4G/download/collection/%E7%BB%84%E5%90%88%E8%AE%A2%E9%98%85?target=ClashMeta"
     type: http
- #   interval: 86400
+    interval: 86400
     health-check:
       enable: true
       url: https://www.gstatic.com/generate_204
@@ -21,7 +21,8 @@ proxy-providers:
       enable: true
       url: https://www.gstatic.com/generate_204
       interval: 300
-    proxy: 直连
+    proxy: 🔯 香港故转
+
 proxies:
   - {name: 直连, type: direct}
 
@@ -126,6 +127,7 @@ proxy-groups:
   - {name: 🔑 自建节点, type: select, include-all: true, filter: "(?=.*自建).*$"}
   - {name: 💸 便宜节点, type: select, include-all: true, filter: "(?=.*0.20x).*$"}
   - {name: 🧩 CFWorks, type: url-test, include-all: true, tolerance: 20, interval: 300, filter: "(?i)(?=.*WS).*$"}
+  - {name: 🌐 香港自动, type: url-test, include-all: true, tolerance: 20, interval: 300, filter: "(?=.*(港|HK|(?i)Hong))^((?!(台|日|韩|新|深|x|自建|美)).)*$"}
   - {name: 🔯 香港故转, type: fallback, include-all: true, tolerance: 20, interval: 300, filter: "(?=.*(港|HK|(?i)Hong))^((?!(台|日|韩|新|深|x|自建|美)).)*$"}
   - {name: 🔯 日本故转, type: fallback, include-all: true, tolerance: 20, interval: 300, filter: "(?=.*(日|JP|(?i)Japan))^((?!(港|台|韩|新|x|自建|美)).)*$" }
   - {name: 🔯 狮城故转, type: fallback, include-all: true, tolerance: 20, interval: 300, filter: "(?=.*(新加坡|坡|狮城|SG|Singapore))^((?!(台|日|韩|深|自建|x|美)).)*$"}
