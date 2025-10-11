@@ -3,7 +3,7 @@
 # 跑裸核用户请自行去掉下方控制面板模块的注释。
 # 机场订阅
 proxy-providers:
-  answerzxzuhe:
+  zuhe:
     url: "http://192.168.31.2:3001/CKg2abstVnOeRpm1aB4G/download/collection/%E7%BB%84%E5%90%88%E8%AE%A2%E9%98%85?target=ClashMeta"
     type: http
     interval: 86400
@@ -13,15 +13,22 @@ proxy-providers:
       interval: 300
     proxy: 直连
 
+
   CF:
-    url: "https://s.jhb.edu.kg/sub?target=clash&url=https%3A%2F%2Fworks.answerzx.top%2Fec559efb-0f4d-4c18-a3c1-8825f6d58a65%2Fsub&insert=false"
+    url: "http://192.168.31.2:3001/CKg2abstVnOeRpm1aB4G/download/CFWorks"
+    type: http  
+    proxy: 直连
+
+  BY:
+    url: "http://192.168.31.2:3001/CKg2abstVnOeRpm1aB4G/download/collection/%E5%A4%87%E7%94%A8%E5%90%88%E8%BE%91"
     type: http
- #   interval: 86400
+    interval: 86400
     health-check:
       enable: true
       url: https://www.gstatic.com/generate_204
       interval: 300
-    proxy: 🔯 香港故转
+    proxy: 直连    
+
 
 proxies:
   - {name: 直连, type: direct}
@@ -109,34 +116,28 @@ dns:
  
 # 出站策略 smart参数 （ uselightgbm: false, collectdata: false, strategy: sticky-sessions,policy-priority: "Premium:0.9;SG:1.3" ）
 # 没有再使用锚点，是考虑很多新手修改难度，这样新手修改某个分组更容易些。
-pr: &pr {type: select, proxies: [🚀 默认代理, 🔯 香港故转, 🔯 日本故转, 🔯 狮城故转, 🔯 美国故转, 🔑 自建节点, 🧩 CFWorks,💸 便宜节点,直连]}
-dr: &dr {type: select, proxies: [直连,🚀 默认代理, 🔯 香港故转, 🔯 日本故转, 🔯 狮城故转, 🔯 美国故转, 🔑 自建节点, 🧩 CFWorks,💸 便宜节点]}
+pr: &pr {type: select, proxies: [🚀 默认代理, 🔯 香港故转, 🔯 日本故转, 🔯 狮城故转, 🔯 美国故转, 🧩 CFWorks, 🔑 自建节点, 💸 便宜节点,🧠 备用节点,直连]}
 proxy-groups:
-  - {name: 🚀 默认代理, type: select, proxies: [♻️ 香港智能, ♻️ 日本智能, ♻️ 狮城智能, ♻️ 美国智能, 🔯 香港故转, 🔯 日本故转, 🔯 狮城故转, 🔯 美国故转, 🧩 CFWorks, 🔑 自建节点, 💸 便宜节点,🌐 手动选择,直连]} 
+  - {name: 🚀 默认代理, type: select, proxies: [🔯 香港故转, 🔯 日本故转, 🔯 狮城故转, 🔯 美国故转, 🧩 CFWorks, 🔑 自建节点, 💸 便宜节点,🧠 备用节点,🌐 手动选择,直连]} 
   - {name: 📹 YouTube, <<: *pr}
   - {name: 🍀 Google, <<: *pr}
-  - {name: 🤖 ChatGPT, <<: *pr}
-  - {name: 👨🏿‍💻 GitHub, <<: *pr}
+  - {name: 🤖 ChatGPT, type: select, proxies: [🔯 美国故转,🚀 默认代理]}
   - {name: 🐬 OneDrive, <<: *pr}
-  - {name: 🪟 Microsoft, <<: *dr}
+  - {name: 🪟 Microsoft, <<: *pr}
   - {name: 📲 Telegram, <<: *pr}
   - {name: 🎥 NETFLIX, <<: *pr}
   - {name: ✈️ Speedtest, <<: *pr}
-  - {name: 🍎 Apple, <<: *dr}
+  - {name: 🍎 Apple, type: select, proxies: [直连,🚀 默认代理]} 
   - {name: 🐟 漏网之鱼, <<: *pr}
+  - {name: 🧠 备用节点, type: select, include-all: true, filter: "(?i)(?=.*BY).*$"}
   - {name: 🔑 自建节点, type: select, include-all: true, filter: "(?=.*自建).*$"}
   - {name: 💸 便宜节点, type: select, include-all: true, filter: "(?=.*0.20x).*$"}
-  - {name: 🧩 CFWorks, type: url-test, include-all: true, tolerance: 20, interval: 300, filter: "(?i)(?=.*WS).*$"}
-  - {name: 🌐 香港自动, type: url-test, include-all: true, tolerance: 20, interval: 300, filter: "(?=.*(港|HK|(?i)Hong))^((?!(台|日|韩|新|深|x|自建|美)).)*$"}
-  - {name: 🔯 香港故转, type: fallback, include-all: true, tolerance: 20, interval: 300, filter: "(?=.*(港|HK|(?i)Hong))^((?!(台|日|韩|新|深|x|自建|美)).)*$"}
-  - {name: 🔯 日本故转, type: fallback, include-all: true, tolerance: 20, interval: 300, filter: "(?=.*(日|JP|(?i)Japan))^((?!(港|台|韩|新|x|自建|美)).)*$" }
-  - {name: 🔯 狮城故转, type: fallback, include-all: true, tolerance: 20, interval: 300, filter: "(?=.*(新加坡|坡|狮城|SG|Singapore))^((?!(台|日|韩|深|自建|x|美)).)*$"}
-  - {name: 🔯 美国故转, type: fallback, include-all: true, tolerance: 20, interval: 300, filter: "(?=.*(美|US|(?i)States|America))^((?!(港|台|韩|新|自建|x|日)).)*$" }
-  - {name: ♻️ 香港智能, type: smart, uselightgbm: false, collectdata: false, include-all: true, interval: 300, filter: "(?=.*(港|HK|(?i)Hong))^((?!(台|日|韩|新|深|美|x|自建)).)*$"}
-  - {name: ♻️ 日本智能, type: smart, uselightgbm: false, collectdata: false, include-all: true, interval: 300, filter: "(?=.*(日|JP|(?i)Japan))^((?!(港|台|韩|新|美|x|自建)).)*$" }
-  - {name: ♻️ 狮城智能, type: smart, uselightgbm: false, collectdata: false, include-all: true, interval: 300, filter: "(?=.*(新加坡|坡|狮城|SG|Singapore))^((?!(港|台|韩|日|美|x|自建)).)*$" }
-  - {name: ♻️ 美国智能, type: smart, uselightgbm: false, collectdata: false, include-all: true, interval: 300, filter: "(?=.*(美|US|(?i)States|America))^((?!(港|台|日|韩|新|x|自建)).)*$"}
-  - {name: ♻️ 自动选择, type: url-test, include-all: true, tolerance: 20, interval: 300, filter: "^((?!(直连)).)*$"}
+  - {name: 🧩 CFWorks, type: select, include-all: true, tolerance: 20, interval: 300, filter: "(?=.*WS).*$"}
+  - {name: ♻️ 香港自动, type: url-test, include-all: true, tolerance: 20, interval: 300, filter: "(?=.*(港|HK|(?i)Hong))^((?!(台|日|韩|新|深|x|自建|美|WS|BY)).)*$"}
+  - {name: 🔯 香港故转, type: fallback, include-all: true, tolerance: 20, interval: 300, filter: "(?=.*(港|HK|(?i)Hong))^((?!(台|日|韩|新|深|x|自建|美|WS|BY)).)*$"}
+  - {name: 🔯 日本故转, type: fallback, include-all: true, tolerance: 20, interval: 300, filter: "(?=.*(日|JP|(?i)Japan))^((?!(港|台|韩|新|x|自建|美|WS|BY)).)*$" }
+  - {name: 🔯 狮城故转, type: fallback, include-all: true, tolerance: 20, interval: 300, filter: "(?=.*(新加坡|坡|狮城|SG|Singapore))^((?!(台|日|韩|深|自建|x|美|WS|BY)).)*$"}
+  - {name: 🔯 美国故转, type: fallback, include-all: true, tolerance: 20, interval: 300, filter: "(?=.*(美|US|(?i)States|America))^((?!(港|台|韩|新|自建|x|日|WS|BY)).)*$" }
   - {name: 🌐 手动选择, type: select, include-all: true}
 # 规则匹配
 # 此规则部分没有做防泄露处理，因为弊严重大于利！
@@ -147,14 +148,13 @@ rules:
   - DOMAIN-KEYWORD,missav,🎥 NETFLIX
   - DOMAIN-KEYWORD,cn2gias,🎥 NETFLIX
   - DOMAIN-KEYWORD,ntfy,直连
+  - DOMAIN-KEYWORD,works.answerzx.top,直连
   - RULE-SET,apple_domain,🍎 Apple
   - RULE-SET,applecn_domain,🍎 Apple
   - RULE-SET,private_domain,直连
-  - RULE-SET,bt_domain,🐬 OneDrive
-  - RULE-SET,pt_domain,🐬 OneDrive
   - RULE-SET,proxylite,🚀 默认代理
   - RULE-SET,ai,🤖 ChatGPT
-  - RULE-SET,github_domain,👨🏿‍💻 GitHub
+  - RULE-SET,github_domain,🚀 默认代理
   - RULE-SET,youtube_domain,📹 YouTube
   - RULE-SET,google_domain,🍀 Google
   - RULE-SET,onedrive_domain,🐬 OneDrive
@@ -197,5 +197,3 @@ rule-providers:
   google_ip: { <<: *ip, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geoip/google.mrs"}
   telegram_ip: { <<: *ip, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geoip/telegram.mrs"}
   netflix_ip: { <<: *ip, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geoip/netflix.mrs"}
-  bt_domain: { <<: *ip, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geoip/bt.mrs"}
-  pt_domain: { <<: *ip, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geoip/pt.mrs"}
