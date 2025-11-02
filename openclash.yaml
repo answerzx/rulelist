@@ -6,7 +6,7 @@
 # 机场订阅
 proxy-providers:
   zuhe:
-    url: "https://sb.miyalalala.ggff.net/88b4c44f84ed750b/download/collection/%E7%BB%84%E5%90%88%E8%AE%A2%E9%98%85?target=ClashMeta"
+    url: "https://sb.miyalalala.ggff.net/88b4c44f84ed750b/download/collection/zuhe?target=ClashMeta"
     type: http
     interval: 86400
     health-check:
@@ -15,10 +15,10 @@ proxy-providers:
       interval: 300
     proxy: 直连
 
-  CF:
-    url: "https://sb.miyalalala.ggff.net/88b4c44f84ed750b/download/CFWorks"
-    type: http
-    proxy: 直连
+  # CF:
+  #   url: "https://sb.miyalalala.ggff.net/88b4c44f84ed750b/download/CFWorks"
+  #   type: http
+  #   proxy: 直连
 
 proxies:
   - {name: 直连, type: direct}
@@ -138,7 +138,7 @@ rules:
   - RULE-SET,private_domain,直连
   - DOMAIN-KEYWORD,ntfy,直连
   - DOMAIN-SUFFIX,works.answerzx.top,直连
-  - DOMAIN-KEYWORD,iill,🚀 默认代理
+  - DOMAIN-KEYWORD,iill,🎥 NETFLIX
   - DOMAIN-KEYWORD,fulibl,🚀 默认代理
   - DOMAIN-KEYWORD,missav,🎥 NETFLIX
   - DOMAIN-KEYWORD,cn2gias,🎥 NETFLIX
